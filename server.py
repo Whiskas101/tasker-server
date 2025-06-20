@@ -77,7 +77,17 @@ def volume_down():
 
     ctypes.windll.user32.keybd_event(VK_VOLUME_DOWN, 0, KEYEVENTF_KEYUP, 0)
     return "decreased_volume"
-    
+   
+   
+@app.route("/shutdown")
+def shutdown():
+    subprocess.call("shutdown /s /t 0", shell=True)
+    return "Shutting down"
+
+@app.route("/sleep")
+def sleep():
+    subprocess.call("rundll32.exe powrprof.dll,SetSuspendState 0,1,0", shell=True)
+    return "Sleeping" 
 
 
 if __name__ == '__main__':
