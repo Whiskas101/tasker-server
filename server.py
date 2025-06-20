@@ -19,9 +19,6 @@ app = Flask(__name__)
 def lock():
     print("Locking...")
     os.system("rundll32.exe user32.dll,LockWorkStation")
-    
-    
-    
 
     return 'Locked'
 
@@ -69,7 +66,7 @@ def volume_up():
     time.sleep(0.05)
     ctypes.windll.user32.keybd_event(VK_VOLUME_UP, 0, KEYEVENTF_KEYUP, 0)
     
-    
+    return "increased_volume"
 
 @app.get('/volume-down')
 def volume_down():
@@ -79,6 +76,7 @@ def volume_down():
     time.sleep(0.05)
 
     ctypes.windll.user32.keybd_event(VK_VOLUME_DOWN, 0, KEYEVENTF_KEYUP, 0)
+    return "decreased_volume"
     
 
 
